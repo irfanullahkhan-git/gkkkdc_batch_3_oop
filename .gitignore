@@ -1,0 +1,8 @@
+# Compiled programs
+*.exe
+*.o
+*.obj
+*.out
+
+# C/C++ Runner build output
+build/
