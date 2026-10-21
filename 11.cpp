@@ -6,6 +6,10 @@ class Engine{
 	int power;
 	string transmission;
 	
+	Engine(){
+		power = -1;
+	}
+	
 	Engine(int p, string trans){
 //		cout<<"\n** Engine Starts Here **";
 		power = p;
@@ -36,10 +40,20 @@ class Car{
 		model = m;
 		mfg_year = m_y;
 //		cout<<"\n ** Car Ends Here **";
-	}	
+	}
+	
+	Car(string m, int m_y){
+//		cout<<"\n ** Car Starts Here **";
+		model = m;
+		mfg_year = m_y;
+//		cout<<"\n ** Car Ends Here **";
+	}
+		
 	void displayCar(){
 		cout<<"Model: "<<model<<" - Mfg Year: "<<mfg_year<<endl;
-		eng.displayEngine();
+		if(eng.power > 0){
+			eng.displayEngine();	
+		}
 	}
 	
 };
@@ -51,7 +65,11 @@ int main(){
 	Car c1("Toyota Yaris", 2020, 1000, "Manual");
 	Car c2("Toyota Vitz", 2020, 1300, "Automatic");
 	
+	Car ec("Tesla", 2026);
+	
 	c1.displayCar();
 	c2.displayCar();
+	
+	ec.displayCar();
 	
 }
