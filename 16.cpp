@@ -10,30 +10,58 @@ class Teacher{
 			name = n;
 			salary = s;
 		}
+		
+		void display(){
+			cout<<"Teacher Name: "<< name<<" Salary: "<< salary<<" \n";
+		}
+		
+		~Teacher(){
+			cout<<"Teacher: "<<name<<" has been destroyed.\n";
+		}
 	
 };
 
 class Department{
 	public:
 		string name;
+		Teacher * t;
 		
-		Department(string dep_name){
+		
+		Department(string dep_name, Teacher * tptr){
 			name = dep_name;
+			t = tptr;
 		}
 		
 		void display(){
-			cout<<"Departmenr Name: "<<name<<endl;
+			cout<<"Department Name: "<<name<<endl;
+			cout<<"Teacher Name: "<< t->name<<" Salary: "<<t->salary<<" \n";
+		}
+		
+		~Department(){
+			cout<<"Department: "<<name<<" has been destroyed.\n";
 		}
 };
 
 int main(){
-	Department * dptr;
-	dptr = new Department("CS");
+//	Teacher tea("Ali", 20000);
+//	Teacher * tp = &tea;
+//	
+//	Department d1("CS", tp);
+//	d1.display();
+//	
 	
-	Department * dptr2;
-	dptr2 = new Department("Urdu");
+	Teacher * tea; // stack
+	 
+	tea = new Teacher("Ali", 20000); // heap
 	
-	Teacher * t = new Teacher("Ali", 10000);
+	Department * d1; // stack
+	d1 = new Department("CS", tea); // heap
 	
-		
+	d1->display();
+
+	delete d1;	
+	
+	tea->display();
+	
+	cout<<"Main function ends here\n";
 }
